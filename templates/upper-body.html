@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Are You A Chad {% endblock %}</h1>
+    <form method="post">
+        <label for="upper-body">Upper Body Standards</label>
+        <br>
+
+        {% for exercise, reps, numerator, denominator, identifier in rules %}
+        <label for="{{ identifier }}"># of {{ exercise }} {% if numerator %} with {{ ((((weight / denominator)|round(0, 'ceil')|int) * numerator) / 5)|round(0, 'ceil')|int * 5 }} lbs {% endif %}</label>
+        <br>
+        <input type="text" inputmode="numeric" pattern="\d|\d{2}|\d{3}" name="{{ identifier }}" placeholder="0" value="{{ request.form.identifier }}"></input>
+        <br>
+        {% endfor %}
+
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

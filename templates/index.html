@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Are You A Chad {% endblock %}</h1>
+    <form method="post">
+        <label for="weight">What is your weight?</label>
+        <input type="number" name="weight" placeholder="0" value="{{ request.form.weight }}"></input>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
